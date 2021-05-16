@@ -51,8 +51,15 @@ def main():
     print('Saving In file...')
     with open(fileName, mode="w",encoding='UTF-8') as f:
         writer = csv.writer(f,delimiter=",",lineterminator="\n")
-        writer.writerow(['username', 'phone','group', 'user_id', 'group_id'])
+        writer.writerow(['first_name','last_name','username', 'phone','group', 'user_id', 'group_id'])
         for user in all_participants:
+            if user.first_name:
+                first_name= user.first_name
+            else:
+                first_name= ""
+            if user.last_name:
+                last_name= user.last_name
+            
             if user.username:
                 username = user.username
             else:
@@ -73,7 +80,7 @@ def main():
                 group_id = target_group["id"]
             else:
                 group_id = ""
-            writer.writerow([username, phone, group, user_id, group_id])      
+            writer.writerow([first_name, last_name,username, phone, group, user_id, group_id])      
     print('Members scraped successfully.')
 
 # Generates '.env' File in the project Directory
