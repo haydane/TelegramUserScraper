@@ -2,6 +2,7 @@ from telethon import TelegramClient, sync
 from dotenv import load_dotenv
 import os
 import csv
+import pandas as pd
 
 def main():
     # Get ENV variables from the '.env' file
@@ -81,7 +82,8 @@ def main():
                     group_id = target_group["id"]
                 else:
                     group_id = ""
-                writer.writerow([username, first_name, last_name, phone, group, user_id, group_id])      
+                writer.writerow([username, first_name, last_name, phone, group, user_id, group_id]) 
+                
 
     print('All Group Members are scraped successfully.')
     
@@ -107,4 +109,3 @@ if __name__ == "__main__":
     else:
         generateENV()
         main()
-        
